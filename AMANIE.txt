@@ -1,0 +1,251 @@
+from langchain_core.documents import Document
+
+# قائمة البيانات مفصلة ومعرفة كوثائق لـ LangChain
+amani_docs = [
+    # --- مرضى القلب ---
+    Document(
+        page_content="يستطيع مريض القلب أداء المناسك إذا كانت حالته مستقرة وبعد مراجعة طبيبه الخاص لتقييم الوضع الصحي.",
+        metadata={"category": "Heart", "type": "Eligibility", "priority": "High"}
+    ),
+    Document(
+        page_content="يجب على مريض القلب حمل كمية كافية من الأدوية وحفظها في مكان آمن وبارد يسهل الوصول إليه.",
+        metadata={"category": "Heart", "type": "Medication", "priority": "High"}
+    ),
+    Document(
+        page_content="يجب حمل بطاقة طبية أو تقرير مفصل يوضح حالة القلب ونوعية الأدوية والجرعات المستخدمة.",
+        metadata={"category": "Heart", "type": "Documentation", "priority": "Medium"}
+    ),
+    Document(
+        page_content="ينصح مريض القلب باستخدام الكرسي المتحرك في الطواف والسعي لتجنب الإجهاد الزائد وفق الرخص الشرعية.",
+        metadata={"category": "Heart", "type": "Activity", "priority": "Medium"}
+    ),
+    Document(
+        page_content="يجب التوجه للمستشفى فوراً عند الشعور بألم في الصدر، أو ألم يمتد للذراع الأيسر، الفك، الرقبة، أو المعدة.",
+        metadata={"category": "Heart", "type": "Emergency", "priority": "Critical"}
+    ),
+    Document(
+        page_content="يجب مراجعة الطوارئ عند الشعور بضيق التنفس، الدوار، عدم الاتزان، أو التعرق الزائد المفاجئ لمريض القلب.",
+        metadata={"category": "Heart", "type": "Emergency", "priority": "Critical"}
+    ),
+
+    # --- مرضى الربو ---
+    Document(
+        page_content="يجب على مريض الربو تجنب الأماكن المزدحمة، الغبار، الدخان، وعوادم السيارات لتفادي نوبات ضيق التنفس.",
+        metadata={"category": "Asthma", "type": "Prevention", "priority": "High"}
+    ),
+    Document(
+        page_content="يُنصح مريض الربو باستخدام بخاخ موسع الشعب الهوائية قبل البدء بمجهود بدني مثل الطواف أو السعي أو رمي الجمرات.",
+        metadata={"category": "Asthma", "type": "Activity", "priority": "High"}
+    ),
+    Document(
+        page_content="ارتداء سوار معصم يوضح الاسم، العمر، تشخيص الربو، ونوعية العلاج المستخدم ضروري لمريض الربو.",
+        metadata={"category": "Asthma", "type": "Documentation", "priority": "Medium"}
+    ),
+    Document(
+        page_content="عند الشعور ببداية نوبة ربو، استخدم البخاخ فوراً وراجع أقرب مستشفى إذا كانت النوبة شديدة.",
+        metadata={"category": "Asthma", "type": "Emergency", "priority": "Critical"}
+    ),
+
+    # --- مرضى الحساسية ---
+    Document(
+        page_content="تجنب التعرض المباشر لأشعة الشمس والزحام، والابتعاد عن الأتربة والمواد الكيميائية المثيرة للحساسية.",
+        metadata={"category": "Allergy", "type": "Prevention", "priority": "Medium"}
+    ),
+    Document(
+        page_content="في حالات الحساسية الشديدة، يجب ارتداء سوار تعريفي وإبلاغ طبيب البعثة فوراً بنوع الحساسية.",
+        metadata={"category": "Allergy", "type": "Emergency", "priority": "High"}
+    ),
+
+    # --- مرضى الكلى ---
+    Document(
+        page_content="يجب على مريض الكلى الالتزام بكميات السوائل والأملاح التي يحددها الطبيب بدقة دون زيادة أو نقصان.",
+        metadata={"category": "Kidney", "type": "Medication", "priority": "High"}
+    ),
+    Document(
+        page_content="تجنب التعرض للشمس لفترات طويلة لمريض الكلى منعاً لفقدان السوائل الذي قد يؤثر سلباً على وظائف الكلى.",
+        metadata={"category": "Kidney", "type": "Prevention", "priority": "High"}
+    ),
+    Document(
+        page_content="لمرضى حصوات الكلى: الإكثار من السوائل وتأدية المناسك بعد الغروب لتجنب الإجهاد الحراري.",
+        metadata={"category": "Kidney", "type": "Activity", "priority": "Medium"}
+    ),
+    Document(
+        page_content="مراجعة أقرب مركز صحي فوراً عند حدوث نزلات معوية أو أعراض عدوى المسالك البولية لمريض الكلى.",
+        metadata={"category": "Kidney", "type": "Emergency", "priority": "Critical"}
+    ),
+from langchain_core.documents import Document
+
+# قائمة وثائق اللقاحات لمشروع أماني - حج 1446هـ
+vaccine_docs = [
+    # --- اللقاحات الإلزامية ---
+    Document(
+        page_content="يُشترط لأداء الحج لعام 1446هـ التحصين ضد: الحمى الشوكية النيسيرية، فيروس كورونا (كوفيد-19)، والإنفلونزا الموسمية.",
+        metadata={"topic": "Mandatory Vaccines", "year": "1446H", "priority": "Critical"}
+    ),
+
+    # --- لقاح الحمى الشوكية ---
+    Document(
+        page_content="لقاح الحمى الشوكية الرباعي (ACYW): يجب تلقيه قبل الحج بمدة لا تقل عن 10 أيام. صلاحية اللقاح المقترن (ACYW-135) هي 5 سنوات، بينما اللقاح متعدد السكريات (ACYWX) صلاحيته 3 سنوات.",
+        metadata={"topic": "Meningococcal", "type": "Requirement", "validity_years": [3, 5]}
+    ),
+
+    # --- لقاح كوفيد-19 ---
+    Document(
+        page_content="لقاح كوفيد-19 المطوّر: يجب تقديم شهادة تحصين لجرعة واحدة مطورة على الأقل، بشرط مرور 10 أيام على الأقل من تلقيها، بغض النظر عن الجرعات السابقة.",
+        metadata={"topic": "COVID-19", "type": "Requirement", "period": "10_days"}
+    ),
+    Document(
+        page_content="آلية عمل لقاح كوفيد-19 (mRNA): يعمل التحصين على تحفيز الجهاز المناعي للتعرف على البروتين الشوكي للفيروس وإنتاج أجسام مضادة، مما يقلل احتمالية الإصابة بنسب كبيرة.",
+        metadata={"topic": "COVID-19", "type": "Scientific"}
+    ),
+
+    # --- لقاح الإنفلونزا ---
+    Document(
+        page_content="لقاح الإنفلونزا الموسمية: يجب تلقيه قبل القدوم بمدة لا تقل عن 10 أيام، ولا تزيد فترة التلقيح السابقة عن سنة واحدة.",
+        metadata={"topic": "Influenza", "type": "Requirement", "validity": "1_year"}
+    ),
+
+    # --- التوقيت والآثار الجانبية ---
+    Document(
+        page_content="التزامن: يمكن تلقي لقاحات الإنفلونزا والحمى الشوكية وكوفيد-19 في نفس الوقت ولا يشترط وجود فاصل زمني بينها.",
+        metadata={"topic": "Vaccine Timing", "type": "Protocol"}
+    ),
+    Document(
+        page_content="الآثار الجانبية: قد تسبب اللقاحات ارتفاع حرارة أو أعراض برد؛ يُنصح بالراحة، شرب السوائل، وتناول المسكنات عند الضرورة.",
+        metadata={"topic": "Side Effects", "type": "Medical Advice"}
+    ),
+
+    # --- الحالات الخاصة (الحوامل والاستثناءات) ---
+    Document(
+        page_content="لقاحات الحج للحوامل: لا يوجد مانع طبي من استخدام جميع لقاحات الحج الإلزامية للمرأة الحامل.",
+        metadata={"topic": "Pregnancy", "type": "Medical Safety"}
+    ),
+    Document(
+        page_content="الاستثناء الطبي: يتم طلب استثناء لقاحات الإنفلونزا والحمى الشوكية عبر الاتصال بـ 937، واستثناء كوفيد-19 عبر تطبيق صحتي (بطاقات الخدمة) مع إرفاق تقرير طبي.",
+        metadata={"topic": "Exemption", "type": "Procedure", "contact": "937"}
+    ),
+
+    # --- مواقع الخدمة ---
+    Document(
+        page_content="موقع تلقي اللقاحات: تتوفر التطعيمات في المراكز الصحية الموفرة لخدمات الحج، ويتم حجز الموعد عبر تطبيق 'صحتي' (أيقونة تطعيمات البالغين).",
+        metadata={"topic": "Location", "type": "Access", "app": "Sehaty"}
+    ),
+Document(
+        page_content="يُشترط لأداء الحج لعام 1446هـ التحصين ضد: الحمى الشوكية النيسيرية، فيروس كورونا (كوفيد-19)، والإنفلونزا الموسمية.",
+        metadata={"topic": "Mandatory Vaccines", "year": "1446H", "priority": "Critical"}
+    ),
+
+    # --- لقاح الحمى الشوكية ---
+    Document(
+        page_content="لقاح الحمى الشوكية الرباعي (ACYW): يجب تلقيه قبل الحج بمدة لا تقل عن 10 أيام. صلاحية اللقاح المقترن (ACYW-135) هي 5 سنوات، بينما اللقاح متعدد السكريات (ACYWX) صلاحيته 3 سنوات.",
+        metadata={"topic": "Meningococcal", "type": "Requirement", "validity_years": [3, 5]}
+    ),
+
+    # --- لقاح كوفيد-19 ---
+    Document(
+        page_content="لقاح كوفيد-19 المطوّر: يجب تقديم شهادة تحصين لجرعة واحدة مطورة على الأقل، بشرط مرور 10 أيام على الأقل من تلقيها، بغض النظر عن الجرعات السابقة.",
+        metadata={"topic": "COVID-19", "type": "Requirement", "period": "10_days"}
+    ),
+    Document(
+        page_content="آلية عمل لقاح كوفيد-19 (mRNA): يعمل التحصين على تحفيز الجهاز المناعي للتعرف على البروتين الشوكي للفيروس وإنتاج أجسام مضادة، مما يقلل احتمالية الإصابة بنسب كبيرة.",
+        metadata={"topic": "COVID-19", "type": "Scientific"}
+    ),
+
+    # --- لقاح الإنفلونزا ---
+    Document(
+        page_content="لقاح الإنفلونزا الموسمية: يجب تلقيه قبل القدوم بمدة لا تقل عن 10 أيام، ولا تزيد فترة التلقيح السابقة عن سنة واحدة.",
+        metadata={"topic": "Influenza", "type": "Requirement", "validity": "1_year"}
+    ),
+
+    # --- التوقيت والآثار الجانبية ---
+    Document(
+        page_content="التزامن: يمكن تلقي لقاحات الإنفلونزا والحمى الشوكية وكوفيد-19 في نفس الوقت ولا يشترط وجود فاصل زمني بينها.",
+        metadata={"topic": "Vaccine Timing", "type": "Protocol"}
+    ),
+    Document(
+        page_content="الآثار الجانبية: قد تسبب اللقاحات ارتفاع حرارة أو أعراض برد؛ يُنصح بالراحة، شرب السوائل، وتناول المسكنات عند الضرورة.",
+        metadata={"topic": "Side Effects", "type": "Medical Advice"}
+    ),
+
+    # --- الحالات الخاصة (الحوامل والاستثناءات) ---
+    Document(
+        page_content="لقاحات الحج للحوامل: لا يوجد مانع طبي من استخدام جميع لقاحات الحج الإلزامية للمرأة الحامل.",
+        metadata={"topic": "Pregnancy", "type": "Medical Safety"}
+    ),
+    Document(
+        page_content="الاستثناء الطبي: يتم طلب استثناء لقاحات الإنفلونزا والحمى الشوكية عبر الاتصال بـ 937، واستثناء كوفيد-19 عبر تطبيق صحتي (بطاقات الخدمة) مع إرفاق تقرير طبي.",
+        metadata={"topic": "Exemption", "type": "Procedure", "contact": "937"}
+    ),
+
+    # --- مواقع الخدمة ---
+    Document(
+        page_content="موقع تلقي اللقاحات: تتوفر التطعيمات في المراكز الصحية الموفرة لخدمات الحج، ويتم حجز الموعد عبر تطبيق 'صحتي' (أيقونة تطعيمات البالغين).",
+        metadata={"topic": "Location", "type": "Access", "app": "Sehaty"}
+    ),
+Document(
+        page_content="يُمنع من الحج المصابون بفشل الكلى المتقدم الذي يستدعي الغسيل الكلوي (الدموي أو البريتوني).",
+        metadata={"category": "Eligibility", "condition": "Kidney Failure", "status": "Prohibited"}
+    ),
+    Document(
+        page_content="يُمنع من الحج المصابون بفشل القلب المتقدم الذي تظهر أعراضه في حالة الراحة أو مع أقل جهد بدني.",
+        metadata={"category": "Eligibility", "condition": "Heart Failure", "status": "Prohibited"}
+    ),
+    Document(
+        page_content="يُمنع من الحج المصابون بأمراض الرئة المزمنة التي تستدعي استخدام الأكسجين بشكل متقطع أو مستمر.",
+        metadata={"category": "Eligibility", "condition": "Lung Disease", "status": "Prohibited"}
+    ),
+    Document(
+        page_content="يُمنع من الحج حالات تليف الكبد المتقدم المصحوب بعلامات الفشل الكبدي مثل الاستسقاء أو نزيف الدوالي.",
+        metadata={"category": "Eligibility", "condition": "Liver Cirrhosis", "status": "Prohibited"}
+    ),
+    Document(
+        page_content="يُمنع من الحج المصابون بالأمراض العصبية والنفسية الشديدة التي تعيق الإدراك أو تسبب إعاقات حركية شديدة.",
+        metadata={"category": "Eligibility", "condition": "Neurological/Psychiatric", "status": "Prohibited"}
+    ),
+    Document(
+        page_content="يُمنع من الحج حالات الشيخوخة المصحوبة بالخرف، والحوامل في الشهرين الأخيرين، والحمل الخطر في جميع مراحله.",
+        metadata={"category": "Eligibility", "condition": "Dementia/Pregnancy", "status": "Prohibited"}
+    ),
+    Document(
+        page_content="يُمنع من الحج المصابون بأمراض معدية نشطة (كالسل الرئوي المفتوح والحميات النزفية) أو السرطان النشط الذي يتلقى علاجاً كيميائياً أو إشعاعياً.",
+        metadata={"category": "Eligibility", "condition": "Infectious Disease/Cancer", "status": "Prohibited"}
+    ),
+Document(
+        page_content="لقاح الحمى الشوكية الرباعي (ACYW): يشترط تقديم شهادة سارية؛ اللقاح متعدد السكريات صلاحيته 3 سنوات، واللقاح المقترن صلاحيته 5 سنوات، ويجب أخذه قبل القدوم بـ10 أيام على الأقل.",
+        metadata={"topic": "Meningococcal", "validity": "3-5 years", "requirement": "Mandatory"}
+    ),
+    Document(
+        page_content="لقاح كوفيد-19 (الفئات عالية الخطورة): يشمل كبار السن (>65)، الحوامل، وذوي الأمراض المزمنة. يتطلب جرعة محدثة لموسم 2024-2025 أو إثبات تعافي خلال عام 2024.",
+        metadata={"topic": "COVID-19", "group": "High Risk", "requirement": "Mandatory"}
+    ),
+    Document(
+        page_content="لقاح شلل الأطفال: القادمون من دول يسري فيها الفيروس (مثل أفغانستان وباكستان) ملزمون بجرعة IPV أو bOPV قبل القدوم بمدة 4 أسابيع إلى 12 شهراً.",
+        metadata={"topic": "Polio", "requirement": "Mandatory", "source_countries": "List in Appendix 1"}
+    ),
+    Document(
+        page_content="لقاح الإنفلونزا الموسمية: موصى به لجميع الحجاج، ويشترط استخدام لقاحات موسم 2024-2025 المحدثة.",
+        metadata={"topic": "Influenza", "requirement": "Recommended", "season": "2024-2025"}
+    ),
+    Document(
+        page_content="لقاح الحمى الصفراء: إلزامي للقادمين من المناطق الموبوءة (ملحق 2)؛ الشهادة تسري بعد 10 أيام من التلقيح وتستمر مدى الحياة.",
+        metadata={"topic": "Yellow Fever", "requirement": "Mandatory for specific countries"}
+    ),Document(
+        page_content="يجب غسل اليدين جيداً بالماء والصابون، استخدام المناديل عند العطس، وارتداء الكمامات في الأماكن المزدحمة.",
+        metadata={"topic": "Respiratory Hygiene", "action": "General Prevention"}
+    ),
+    Document(
+        page_content="يُمنع تناول الأطعمة المكشوفة أو الحليب غير المبستر، ويجب طهي الطعام جيداً وغسل الخضروات والفواكه.",
+        metadata={"topic": "Food Safety", "action": "General Prevention"}
+    ),
+    Document(
+        page_content="يجب تجنب التعرض المباشر للشمس وشرب كميات كافية من السوائل للوقاية من الإجهاد الحراري وضربات الشمس.",
+        metadata={"topic": "Heat Stroke", "action": "Prevention"}
+    ),
+    Document(
+        page_content="تجنب الاتصال المباشر مع الإبل في المزارع أو الأسواق للوقاية من الأمراض المعدية.",
+        metadata={"topic": "Animal Contact", "action": "Prevention"}
+    )
+]
+]
+
+]
